@@ -67,4 +67,5 @@ Casi todo se ajusta con constantes al principio de `index.js`:
 - `goalFor` y `timeFor`: estrellas y tiempo de cada nivel.
 - `DS` y `DP`: velocidad y multiplicador de puntos por dificultad.
 - `SK`: colores de los personajes.
-- `ACH`: nombres y descripciones de los logros.
+- `ACH`: nombres y descripciones de los logros. Y ya estaria
+- 
