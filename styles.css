@@ -1,0 +1,352 @@
+:root {
+    --page: #eef1fb;
+    --ink: #1b2340;
+    --mut: #5a6486;
+    color-scheme: light dark;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px)
+}
+
+@media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) {
+        --page: #070b14;
+        --ink: #e8ecff;
+        --mut: #8b93b8
+    }
+}
+
+:root[data-theme="dark"] {
+    --page: #070b14;
+    --ink: #e8ecff;
+    --mut: #8b93b8
+}
+
+html {
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+    height: 100%
+}
+
+body {
+    margin: 0;
+    min-height: 100%;
+    background: var(--page);
+    color: var(--ink);
+    font-family: Fredoka, 'Trebuchet MS', system-ui, sans-serif;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 14px;
+    padding: 12px
+}
+
+#app {
+    position: relative;
+    width: min(100%, 900px);
+    aspect-ratio: 900/540;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px #7c3aed44, 0 0 0 2px #ffffff18;
+    background: #0b1020;
+    font-size: clamp(10px, 2.1vw, 17px);
+    color: #fff;
+    user-select: none;
+    -webkit-user-select: none
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    display: block
+}
+
+#hud {
+    position: absolute;
+    inset: 0 0 auto 0;
+    padding: .7em .8em;
+    display: none;
+    pointer-events: none
+}
+
+#hud.on {
+    display: block
+}
+
+.row {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+    flex-wrap: wrap
+}
+
+.pill {
+    background: #080c1c99;
+    backdrop-filter: blur(6px);
+    padding: .25em .8em;
+    border-radius: 99px;
+    font-weight: 700;
+    white-space: nowrap
+}
+
+#hearts {
+    letter-spacing: .1em;
+    font-size: 1.15em
+}
+
+#pb {
+    pointer-events: auto;
+    margin-left: auto;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    font: inherit;
+    font-weight: 700
+}
+
+.bar {
+    height: .55em;
+    border-radius: 9px;
+    background: #ffffff22;
+    margin-top: .5em;
+    overflow: hidden
+}
+
+.bar i {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 9px;
+    background: linear-gradient(90deg, #fbbf24, #f472b6);
+    transition: width .25s
+}
+
+.bar.t i {
+    background: linear-gradient(90deg, #22d3ee, #7c3aed);
+    transition: none
+}
+
+.bar.t.low i {
+    background: #ef4444
+}
+
+#cb {
+    position: absolute;
+    right: 1.2em;
+    top: 4.6em;
+    font-weight: 700;
+    font-size: 1.6em;
+    color: #fbbf24;
+    text-shadow: 0 0 14px #f59e0b
+}
+
+.scr {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .8em;
+    text-align: center;
+    background: radial-gradient(circle at 50% 40%, #1b1147cc, #050814ee);
+    backdrop-filter: blur(4px);
+    padding: 1em
+}
+
+.scr.on {
+    display: flex;
+    animation: pop .35s ease-out
+}
+
+@keyframes pop {
+    from {
+        opacity: 0;
+        transform: scale(.96)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+h1 {
+    margin: 0;
+    font-size: 4.2em;
+    line-height: 1;
+    font-weight: 700;
+    background: linear-gradient(100deg, #fbbf24, #f472b6 45%, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: fl 3s ease-in-out infinite
+}
+
+h2 {
+    margin: 0;
+    font-size: 2.6em;
+    font-weight: 700
+}
+
+@keyframes fl {
+    50% {
+        transform: translateY(-6px) rotate(-1deg)
+    }
+}
+
+p {
+    margin: 0;
+    color: #c7cdf2
+}
+
+.btn {
+    font: inherit;
+    font-weight: 700;
+    font-size: 1.25em;
+    padding: .55em 1.9em;
+    border: 0;
+    border-radius: 99px;
+    color: #fff;
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    box-shadow: 0 6px 22px #7c3aed77;
+    cursor: pointer;
+    transition: transform .15s
+}
+
+.btn:hover,
+.btn:focus-visible {
+    transform: translateY(-2px) scale(1.05);
+    outline: 2px solid #fff
+}
+
+.btn.g {
+    background: #ffffff1c;
+    box-shadow: none
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: .6em;
+    align-items: center
+}
+
+.big {
+    font-size: 3.4em;
+    font-weight: 700;
+    color: #fbbf24;
+    line-height: 1
+}
+
+.help {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .4em 1.6em;
+    text-align: left;
+    max-width: 34em;
+    font-size: .95em
+}
+
+.help b {
+    font-size: 1.2em
+}
+
+#tc {
+    position: absolute;
+    inset: auto 0 .6em 0;
+    display: none;
+    justify-content: space-between;
+    padding: 0 .8em;
+    pointer-events: none
+}
+
+#tc button {
+    pointer-events: auto;
+    touch-action: none;
+    width: 4.6em;
+    height: 4.6em;
+    border-radius: 50%;
+    border: 0;
+    background: #ffffff2e;
+    color: #fff;
+    font-size: 1.3em;
+    backdrop-filter: blur(4px)
+}
+
+#tc div {
+    display: flex;
+    gap: .7em
+}
+
+@media (hover:none) and (pointer:coarse) {
+    #tc.on {
+        display: flex
+    }
+}
+
+#hint {
+    font-size: .9rem;
+    color: var(--mut);
+    text-align: center
+}
+
+@media (prefers-reduced-motion:reduce) {
+    h1 {
+        animation: none
+    }
+
+    .scr.on {
+        animation: none
+    }
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5em;
+    justify-content: center;
+    max-width: 38em
+}
+
+.btn.s {
+    font-size: .95em;
+    padding: .45em 1.1em
+}
+
+#fx:empty {
+    display: none
+}
+
+#recb {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5em;
+    text-align: left;
+    font-size: .95em;
+    max-width: 40em
+}
+
+#recb p {
+    margin: .25em 0
+}
+
+#toast {
+    position: absolute;
+    top: 5.5em;
+    left: 50%;
+    transform: translate(-50%, -20px);
+    opacity: 0;
+    background: #fbbf24;
+    color: #1b1147;
+    font-weight: 700;
+    padding: .4em 1.2em;
+    border-radius: 99px;
+    transition: .3s;
+    pointer-events: none;
+    white-space: nowrap
+}
+
+#toast.on {
+    opacity: 1;
+    transform: translate(-50%, 0)
+}

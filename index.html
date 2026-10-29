@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Star Dodger</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <canvas id="c" width="900" height="540"></canvas>
+        <div id="hud">
+            <div class="row"><span class="pill" id="hearts"></span><span class="pill">Nivel <b id="lv">1</b></span><span
+                    class="pill">⭐ <b id="sc">0</b></span><span class="pill">Récord <b id="bs">0</b></span><span
+                    class="pill">⏱️ <b id="tm">45</b>s</span><span class="pill" id="fx"></span><button class="pill"
+                    id="pb" data-a="pause" aria-label="Pausa">⏸</button></div>
+            <div class="bar"><i id="gb"></i></div>
+            <div class="bar t" id="tbw"><i id="tb"></i></div>
+        </div>
+        <div id="cb"></div>
+        <div id="toast"></div>
+        <div id="tc">
+            <div><button id="tl" aria-label="Izquierda">◀</button><button id="tr" aria-label="Derecha">▶</button></div>
+            <button id="tj" aria-label="Saltar">⤒</button>
+        </div>
+
+        <section class="scr on" id="menu">
+            <h1>Star Dodger</h1>
+            <p>Esquiva meteoritos, salta el fuego y atrapa estrellas.</p>
+            <button class="btn" data-a="play">Jugar</button>
+            <div class="grid"><button class="btn g s" data-a="diff" id="diffb"></button><button class="btn g s"
+                    data-a="skin" id="skinb"></button><button class="btn g s" data-a="snd" id="sndb"></button><button
+                    class="btn g s" data-a="mus" id="musb"></button><button class="btn g s" data-a="help">Cómo
+                    jugar</button><button class="btn g s" data-a="rec">Logros y récords</button><button class="btn g s"
+                    data-a="fs">Pantalla completa</button></div>
+            <p>Tu récord: <b id="best">0</b></p>
+        </section>
+
+        <section class="scr" id="help">
+            <h2>Cómo jugar</h2>
+            <div class="help"><span><b>⭐</b> Estrella: +10 y avanza el objetivo</span><span><b>💎</b> Gema: vale
+                    triple</span><span><b>❤️</b> Corazón: +1 vida (máximo 5)</span><span><b>⏱️</b> Reloj: +6
+                    segundos</span><span><b>🛡️</b> Escudo: bloquea un golpe</span><span><b>🧲</b> Imán: atrae estrellas
+                    y gemas 7 s</span><span><b>❄️</b> Hielo: ralentiza todo 5 s</span><span><b>☄️</b> Meteorito:
+                    esquívalo y salta el fuego que deja</span><span><b>🔥</b> Lluvia de meteoritos: aguanta 6 s</span>
+            </div>
+            <p>Mover: ← → o A D · Saltar (doble salto): ↑, W o espacio · Pausa: P o Esc</p>
+            <p>Recoge seguido para subir el combo hasta x5. Llena la barra dorada antes de que se acabe el tiempo.</p>
+            <button class="btn" data-a="menu">Volver</button>
+        </section>
+
+        <section class="scr" id="rec">
+            <h2>Logros y récords</h2>
+            <div id="recb"></div><button class="btn" data-a="menu">Volver</button>
+        </section>
+
+        <section class="scr" id="pause">
+            <h2>Pausa</h2>
+            <div class="col"><button class="btn" data-a="resume">Continuar</button><button class="btn g"
+                    data-a="play">Reiniciar</button><button class="btn g" data-a="menu">Menú principal</button></div>
+        </section>
+
+        <section class="scr" id="over">
+            <h2>Fin de la partida</h2>
+            <div class="big" id="osc">0</div>
+            <p id="oinfo"></p>
+            <p id="onew"></p>
+            <div class="col"><button class="btn" data-a="play">Jugar otra vez</button><button class="btn g"
+                    data-a="rec">Logros y récords</button><button class="btn g" data-a="menu">Menú principal</button>
+            </div>
+        </section>
+    </div>
+    <div id="hint">Flechas o A D para moverte · Arriba o espacio para saltar · P para pausar</div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
